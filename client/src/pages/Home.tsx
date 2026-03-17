@@ -59,7 +59,9 @@ export default function Home() {
           </div>
           <nav className="hidden md:flex items-center gap-8">
             <a href="#about" className="text-sm font-medium text-foreground hover:text-primary transition">협회소개</a>
-            <a href="#services" className="text-sm font-medium text-foreground hover:text-primary transition">술기안내</a>
+            <a href="/skill-guide" className="text-sm font-medium text-foreground hover:text-primary transition">술기안내</a>
+            <a href="/board" className="text-sm font-medium text-foreground hover:text-primary transition">게시판</a>
+            <a href="/community" className="text-sm font-medium text-foreground hover:text-primary transition">커뮤니티</a>
             <a href="#contact" className="text-sm font-medium text-foreground hover:text-primary transition">연락처</a>
           </nav>
           <div className="flex items-center gap-3">
