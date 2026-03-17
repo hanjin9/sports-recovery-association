@@ -82,7 +82,7 @@ export default function Home() {
       <section className="relative py-0 md:py-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5 overflow-hidden">
         <div className="relative w-full h-[500px] md:h-[600px] flex items-center justify-center">
           <img 
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663351563633/2BPpRBXCnBZ6CCnqv7Cgqp/hero-sports-recovery-cMAghcY5WrXbnYdp6KzoZt.webp" 
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663351563633/2BPpRBXCnBZ6CCnqv7Cgqp/hero-premium-massage-g64gaUaLmMnwzE6AEoDQLU.webp" 
             alt="스포츠 회복 마사지 테라피"
             className="absolute inset-0 w-full h-full object-cover"
           />

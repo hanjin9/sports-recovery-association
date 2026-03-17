@@ -8,15 +8,19 @@ import Home from "./pages/Home";
 import Board from "./pages/Board";
 import Community from "./pages/Community";
 import SkillGuide from "./pages/SkillGuide";
+import AdminDashboard from "./pages/AdminDashboard";
+import UserProfile from "./pages/UserProfile";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
-      <Route path={"\\"} component={Home} />
+      <Route path={"/"} component={Home} />
       <Route path={"/board"} component={Board} />
       <Route path={"/community"} component={Community} />
-      <Route path={"/skill-guide"} component={SkillGuide} />
+      <Route path="/skill-guide" component={SkillGuide} />
+      <Route path="/admin" component={AdminDashboard} />
+      <Route path="/profile" component={UserProfile} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
