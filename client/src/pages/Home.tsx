@@ -48,7 +48,7 @@ export default function Home() {
       {/* Header/Navigation */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border shadow-sm">
         <div className="container flex items-center justify-between h-20">
-          <div className="flex items-center gap-3">
+          <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer">
             <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-lg">
               SR
             </div>
@@ -56,7 +56,7 @@ export default function Home() {
               <h1 className="text-sm font-bold text-primary">SRMA</h1>
               <p className="text-xs text-muted-foreground">스포츠 회복 관리사 협회</p>
             </div>
-          </div>
+          </a>
           <nav className="hidden md:flex items-center gap-8">
             <a href="#about" className="text-sm font-medium text-foreground hover:text-primary transition">협회소개</a>
             <a href="/skill-guide" className="text-sm font-medium text-foreground hover:text-primary transition">술기안내</a>
@@ -71,7 +71,7 @@ export default function Home() {
                 <Button size="sm" variant="outline" onClick={logout}>로그아웃</Button>
               </>
             ) : (
-              <Button size="sm" onClick={() => window.location.href = getLoginUrl()}>로그인</Button>
+              <Button size="sm" onClick={() => window.location.href = '/login'}>로그인</Button>
             )}
             <Button className="bg-secondary hover:bg-secondary/90 text-secondary-foreground" onClick={() => setShowReservationForm(true)}>예약하기</Button>
           </div>

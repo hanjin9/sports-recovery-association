@@ -71,12 +71,12 @@ export default function SkillGuide() {
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border shadow-sm">
         <div className="container flex items-center justify-between h-20">
-          <div className="flex items-center gap-3">
+          <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer">
             <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-lg">
               SR
             </div>
             <h1 className="text-lg font-bold text-primary">술기 안내 및 시험</h1>
-          </div>
+          </a>
         </div>
       </header>
 

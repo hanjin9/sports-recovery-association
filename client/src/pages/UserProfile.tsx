@@ -16,7 +16,7 @@ export default function UserProfile() {
           <h2 className="text-2xl font-bold text-primary mb-4">로그인 필요</h2>
           <p className="text-foreground/60 mb-6">마이페이지를 보려면 로그인해야 합니다.</p>
           <Button 
-            onClick={() => window.location.href = getLoginUrl()}
+            onClick={() => window.location.href = '/login'}
             className="bg-secondary hover:bg-secondary/90"
           >
             로그인하기
@@ -45,12 +45,12 @@ export default function UserProfile() {
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border shadow-sm">
         <div className="container flex items-center justify-between h-20">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white font-bold">
-              <User className="w-6 h-6" />
+          <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer">
+            <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-lg">
+              SR
             </div>
             <h1 className="text-lg font-bold text-primary">마이페이지</h1>
-          </div>
+          </a>
         </div>
       </header>
 

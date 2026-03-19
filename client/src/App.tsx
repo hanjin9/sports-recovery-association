@@ -10,12 +10,14 @@ import Community from "./pages/Community";
 import SkillGuide from "./pages/SkillGuide";
 import AdminDashboard from "./pages/AdminDashboard";
 import UserProfile from "./pages/UserProfile";
+import Login from "./pages/Login";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path="/login" component={Login} />
       <Route path={"/board"} component={Board} />
       <Route path={"/community"} component={Community} />
       <Route path="/skill-guide" component={SkillGuide} />

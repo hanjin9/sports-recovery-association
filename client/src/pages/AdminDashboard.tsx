@@ -78,12 +78,12 @@ export default function AdminDashboard() {
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border shadow-sm">
         <div className="container flex items-center justify-between h-20">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white font-bold">
-              AD
+          <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer">
+            <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-lg">
+              SR
             </div>
             <h1 className="text-lg font-bold text-primary">관리자 대시보드</h1>
-          </div>
+          </a>
         </div>
       </header>
 

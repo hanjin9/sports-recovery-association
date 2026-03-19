@@ -42,14 +42,14 @@ export default function Community() {
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border shadow-sm">
         <div className="container flex items-center justify-between h-20">
-          <div className="flex items-center gap-3">
+          <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer">
             <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-lg">
               SR
             </div>
-            <h1 className="text-lg font-bold text-primary">SRMA 커뮤니티</h1>
-          </div>
+            <h1 className="text-lg font-bold text-primary">SRMA 커미니티</h1>
+          </a>
           <Button 
-            onClick={() => isAuthenticated ? setShowCreateForm(true) : window.location.href = getLoginUrl()}
+            onClick={() => isAuthenticated ? setShowCreateForm(true) : window.location.href = '/login'}
             className="bg-secondary hover:bg-secondary/90"
           >
             <Plus className="w-4 h-4 mr-2" /> 글쓰기
