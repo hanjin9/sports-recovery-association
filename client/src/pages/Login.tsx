@@ -1,20 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Mail, Chrome, Apple } from "lucide-react";
-import { useNavigate } from "wouter";
+import { useLocation } from "wouter";
 import { useEffect } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
 
 export default function Login() {
-  const navigate = useNavigate();
+  const [, setLocation] = useLocation();
   const { isAuthenticated } = useAuth();
 
   // 이미 로그인된 경우 홈으로 리다이렉트
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/");
+      setLocation("/");
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, setLocation]);
 
   const handleGoogleLogin = () => {
     // Google OAuth 로그인
