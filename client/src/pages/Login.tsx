@@ -12,6 +12,8 @@ export default function Login() {
   const [isPhoneVerified, setIsPhoneVerified] = useState(false);
 
   const handleGoogleLogin = () => {
+    // 로컬 테스트용: 직접 쿠키 설정 (서버 세션이 없는 경우 프론트엔드 목업으로 동작할 수 있도록 함)
+    document.cookie = "manus_session=test-session-id; path=/; max-age=31536000";
     localStorage.setItem("user", JSON.stringify({ 
       id: "google-user-1", 
       name: "Google User", 
@@ -19,6 +21,8 @@ export default function Login() {
       provider: "google"
     }));
     setLocation("/");
+    // 페이지 새로고침하여 인증 상태 반영
+    window.location.reload();
   };
 
   const handleKakaoLogin = () => {
