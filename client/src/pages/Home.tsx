@@ -17,12 +17,25 @@ export default function Home() {
     phone: "",
     message: "",
   });
+  const [reservationData, setReservationData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    date: "",
+  });
+
+  // tRPC 예약 mutation
+  const createReservation = trpc.reservations.create.useMutation({
+    onSuccess: (res) => {
+      toast.success(res.message);
+      setReservationData({ name: "", email: "", phone: "", date: "" });
+      setShowReservationForm(false);
+    },
+    onError: (err) => toast.error(err.message),
+  });
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmitConsultation = (e: React.FormEvent) => {
@@ -41,6 +54,15 @@ export default function Home() {
       return;
     }
     setShowPaymentModal(true);
+  };
+
+  const handleReservationSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!reservationData.name || !reservationData.email || !reservationData.phone || !reservationData.date) {
+      toast.error("모든 항목을 입력해주세요");
+      return;
+    }
+    createReservation.mutate(reservationData);
   };
 
   return (
@@ -62,6 +84,8 @@ export default function Home() {
             <a href="/skill-guide" className="text-sm font-medium text-foreground hover:text-primary transition">술기안내</a>
             <a href="/board" className="text-sm font-medium text-foreground hover:text-primary transition">게시판</a>
             <a href="/community" className="text-sm font-medium text-foreground hover:text-primary transition">커뮤니티</a>
+            <a href="/appointments" className="text-sm font-medium text-foreground hover:text-primary transition">상담예약</a>
+            <a href="/membership" className="text-sm font-medium text-foreground hover:text-primary transition">멤버십</a>
             <a href="#contact" className="text-sm font-medium text-foreground hover:text-primary transition">연락처</a>
           </nav>
           <div className="flex items-center gap-3">
@@ -350,14 +374,45 @@ export default function Home() {
           <Card className="w-full max-w-md bg-white">
             <div className="p-6">
               <h3 className="text-2xl font-bold text-primary mb-4">예약 신청</h3>
-              <form className="space-y-4">
-                <input type="text" placeholder="이름" className="w-full px-4 py-2 border border-border rounded-lg" />
-                <input type="email" placeholder="이메일" className="w-full px-4 py-2 border border-border rounded-lg" />
-                <input type="tel" placeholder="전화번호" className="w-full px-4 py-2 border border-border rounded-lg" />
-                <input type="date" className="w-full px-4 py-2 border border-border rounded-lg" />
+              <form onSubmit={handleReservationSubmit} className="space-y-4">
+                <input
+                  type="text"
+                  placeholder="이름"
+                  value={reservationData.name}
+                  onChange={(e) => setReservationData({ ...reservationData, name: e.target.value })}
+                  className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+                />
+                <input
+                  type="email"
+                  placeholder="이메일"
+                  value={reservationData.email}
+                  onChange={(e) => setReservationData({ ...reservationData, email: e.target.value })}
+                  className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+                />
+                <input
+                  type="tel"
+                  placeholder="전화번호"
+                  value={reservationData.phone}
+                  onChange={(e) => setReservationData({ ...reservationData, phone: e.target.value })}
+                  className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+                />
+                <input
+                  type="date"
+                  value={reservationData.date}
+                  onChange={(e) => setReservationData({ ...reservationData, date: e.target.value })}
+                  className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+                />
                 <div className="flex gap-3">
-                  <Button className="flex-1 bg-secondary hover:bg-secondary/90">예약 확정</Button>
-                  <Button variant="outline" className="flex-1" onClick={() => setShowReservationForm(false)}>취소</Button>
+                  <Button
+                    type="submit"
+                    className="flex-1 bg-secondary hover:bg-secondary/90"
+                    disabled={createReservation.isPending}
+                  >
+                    {createReservation.isPending ? "신청 중..." : "예약 확정"}
+                  </Button>
+                  <Button type="button" variant="outline" className="flex-1" onClick={() => setShowReservationForm(false)}>
+                    취소
+                  </Button>
                 </div>
               </form>
             </div>
